@@ -27,7 +27,7 @@ class UsersMiddleware
             }
             // Se o usuário for cliente, redireciona para a home com uma mensagem de erro
             else if (Auth::user()->user_type === 'aluno') {
-                return redirect('/')->with('error', 'Acesso negado - a página que tentou acessar é restrita para administradores.');
+                return redirect('/login')->with('error', 'Acesso negado - a página que tentou acessar é restrita para administradores.');
             }
         } else {
             // Se o usuário não estiver logado, redireciona para a tela de login com uma mensagem de erro

@@ -8,12 +8,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/professores">
-                    <i class="bi bi-card-checklist"></i>
-                    Professores
-                </a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="/cursos">
                     <i class="bi bi-cart"></i>
                     Cursos
@@ -23,6 +17,12 @@
                 <a class="nav-link" href="/alunos">
                     <i class="bi bi-person-badge"></i>
                     Alunos
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/professores">
+                    <i class="bi bi-card-checklist"></i>
+                    Professores
                 </a>
             </li>
             <li class="nav-item">

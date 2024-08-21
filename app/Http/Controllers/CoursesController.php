@@ -13,8 +13,8 @@ class CoursesController extends Controller
      */
     public function index()
     {
-        $courses = Courses::all();
-        return view('users.dashboard', compact('courses'));
+        $cursos = Courses::all();
+        return view('cursos.index', compact('cursos'));
     }
 
     /**
@@ -78,9 +78,9 @@ class CoursesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Courses $course)
+    public function destroy(Courses $curso)
     {
-        $course->delete();
+        $curso->delete();
         return redirect()->route('cursos.index')->with('success', 'Curso excluído com sucesso!');
     }
 

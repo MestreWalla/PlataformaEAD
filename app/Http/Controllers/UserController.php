@@ -30,7 +30,6 @@ class UserController extends Controller
             return redirect()->intended('/dashboard');
         }
 
-
         return back()->withErrors([
             'email' => 'As credenciais não correspondem aos nossos registro.',
         ])->onlyInput('email');

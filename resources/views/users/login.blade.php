@@ -3,6 +3,18 @@
 @section('content')
     <div class="container m-4">
         <h1>Login</h1>
+
+        @if ($message = Session::get('success'))
+            <div id="success-message" class="alert alert-success">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+        @if ($message = Session::get('error'))
+            <div id="error-message" class="alert alert-warning">
+                <p>{{ $message }}</p>
+            </div>
+        @endif
+
         <form method="POST" action="{{ route('users.login') }}">
             @csrf
 
@@ -17,7 +29,27 @@
             </div>
 
             <button type="submit" class="btn btn-primary mt-3">Login</button>
-            <a href="register" class="btn btn-success mt-3">Registrar</a>
+            <a href="{{ route('users.register') }}" class="btn btn-success mt-3">Registrar</a>
         </form>
     </div>
+
+@section('scripts')
+    <script>
+        // Define o tempo em milissegundos (ex: 3000 ms = 3 segundos)
+        const timeoutDuration = 3000;
+        // Função para esconder a mensagem após um determinado tempo
+        function hideMessage(id) {
+            const messageElement = document.getElementById(id);
+            if (messageElement) {
+                setTimeout(() => {
+                    messageElement.style.display = 'none';
+                }, timeoutDuration);
+            }
+        }
+
+        // Esconde as mensagens de sucesso e erro
+        hideMessage('success-message');
+        hideMessage('error-message');
+    </script>
+@endsection
 @endsection

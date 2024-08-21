@@ -2,27 +2,27 @@
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">
+                <a class="nav-link active" aria-current="page" href="/dashboard">
                     <span data-feather="home"></span>
                     <h5>Dashboard</h5>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/professores">
                     <i class="bi bi-card-checklist"></i>
-                    Pedidos
+                    Professores
                 </a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/cursos">
                     <i class="bi bi-cart"></i>
-                    cursos
+                    Cursos
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/alunos">
                     <i class="bi bi-person-badge"></i>
-                    Clientes
+                    Alunos
                 </a>
             </li>
             <li class="nav-item">

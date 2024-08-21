@@ -22,7 +22,7 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div
                     class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Dashboard</h1>
+                    <h2 class="">Dashboard</h2>
                     <div class="btn-toolbar mb-2 mb-md-0">
                         <div class="btn-group me-2">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Compartilhar</button>
@@ -31,32 +31,36 @@
                     </div>
                 </div>
 
-                <h1>Dashboard de cursos</h1>
+                <h2 class="">Cursos</h2>
 
-                <a class="btn btn-primary" href="/courses/create">Cadastrar novo Curso</a>
                 <form method="GET" action="{{ route('dashboard') }}">
-                    <input type="text" name="search" placeholder="Pesquisar cursos..." value="{{ request('search') }}">
-                    <button type="submit">Pesquisar</button>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" name="search" placeholder="Pesquisar cursos..."
+                            value="{{ request('search') }}">
+                        <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
+                    </div>
                 </form>
+                <a class="btn btn-primary" href="/courses/create">Cadastrar novo Curso</a>
+
 
                 <!-- Lista de Cursos -->
                 <div class="row mt-3 mb-3">
                     @foreach ($cursos as $curso)
                         <div class="col-md-4">
                             <div class="card">
-                                {{-- <img src="{{ asset('storage/' . $curso->imagem) }}" class="card-img-top"
-                    alt="{{ $curso->name }}"> --}}
+                                {{-- Se você tiver uma imagem para o curso, pode descomentar a linha abaixo --}}
+                                {{-- <img src="{{ asset('storage/' . $curso->imagem) }}" class="card-img-top" alt="{{ $curso->name }}"> --}}
                                 {{-- <img src="assets/img/Curso.jpg" class="rounded card-img-top" alt="{{ $curso->title }}"> --}}
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $curso->title }}</h5>
                                     <p class="card-text">{{ $curso->description }}</p>
                                     <p class="card-text">Preço: R$ {{ $curso->price }}</p>
-                                    {{-- <a href="{{ route('course.show', $curso->id) }}" class="btn btn-primary">Ver
-                                        Curso</a> --}}
+                                    <a href="{{ route('cursos.show', $curso->id) }}" class="btn btn-primary">Ver Curso</a>
                                 </div>
                             </div>
                         </div>
                     @endforeach
+
                 </div>
 
 

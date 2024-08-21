@@ -8,9 +8,11 @@ use App\Http\Middleware\UsersMiddleware;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentsController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {return view('index');});
+Route::get('/', function () {return view('index');})->name('index');
+
+
+
 // Rotas para Cadastro de Usuário
 Route::get('/register', [UserController::class, 'showRegisterForm'])->name('users.register');
 Route::post('/register', [UserController::class, 'register'])->name('users.store');

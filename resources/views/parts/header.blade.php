@@ -20,7 +20,7 @@
                     <a class="nav-link" href="#">Sobre</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contato</a>
+                    <a class="nav-link" href="#contato">Contato</a>
                 </li>
                 @if (Auth::check())
                     @if (Auth::user()->user_type === 'professor')

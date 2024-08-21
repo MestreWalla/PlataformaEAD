@@ -48,8 +48,9 @@
                     @foreach ($cursos as $curso)
                         <div class="col-md-4">
                             <div class="card">
-                                {{-- Se você tiver uma imagem para o curso, pode descomentar a linha abaixo --}}
                                 {{-- <img src="{{ asset('storage/' . $curso->imagem) }}" class="card-img-top" alt="{{ $curso->name }}"> --}}
+                                <img src="{{ 'https://via.placeholder.com/150' }}"
+                                class="card-img-top" alt="{{ $curso->title }}">
                                 {{-- <img src="assets/img/Curso.jpg" class="rounded card-img-top" alt="{{ $curso->title }}"> --}}
                                 <div class="card-body">
                                     <h5 class="card-title">{{ $curso->title }}</h5>

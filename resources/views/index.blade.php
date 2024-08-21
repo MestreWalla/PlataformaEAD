@@ -14,7 +14,7 @@
     <div class="container my-5">
         <!-- Seção de Boas-vindas -->
         <section class="text-center mb-5">
-            <h1 class="display-4">Bem-vindo à Escola ABC</h1>
+            <h1 class="display-4">Bem-vindo à Plataforma EAD</h1>
             <p class="lead">Uma instituição dedicada a oferecer a melhor educação para você!</p>
             <a href="{{ route('index') }}" class="btn btn-primary btn-lg">Ver Cursos</a>
         </section>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="col-md-6">
                     <h2>Sobre Nós</h2>
-                    <p>A Escola ABC foi fundada com a missão de proporcionar uma educação de qualidade e acessível. Nossos
+                    <p>A Plataforma EAD foi fundada com a missão de proporcionar uma educação de qualidade e acessível. Nossos
                         professores são experientes e dedicados ao desenvolvimento acadêmico e pessoal dos alunos.
                         Oferecemos uma variedade de cursos que atendem às necessidades de todos, desde iniciantes até
                         profissionais avançados.</p>
@@ -43,7 +43,7 @@
                 @foreach ($cursos as $curso)
                     <div class="col-md-4 mb-4">
                         <div class="card h-100">
-                            <img src="{{ $course->img_path ? asset('storage/' . $curso->img_path) : 'https://via.placeholder.com/150' }}"
+                            <img src="{{ 'https://via.placeholder.com/150' }}"
                                 class="card-img-top" alt="{{ $curso->title }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ $curso->title }}</h5>
@@ -65,9 +65,10 @@
                 @foreach ($teachers as $teacher)
                     <div class="col-md-3 mb-4">
                         <div class="card h-100 text-center">
-                            <img src="{{ $teacher->img_path ? asset('storage/' . $teacher->img_path) : 'https://via.placeholder.com/150' }}"
+                                <img src="{{ $teacher->img_path ? asset('storage/' . $teacher->img_path) : 'https://via.placeholder.com/150' }}"
                                 class="card-img-top rounded-circle mx-auto mt-3" style="width: 150px; height: 150px;"
                                 alt="{{ $teacher->name }}">
+
                             <div class="card-body">
                                 <h5 class="card-title">{{ $teacher->name }}</h5>
                                 <p class="card-text">{{ $teacher->bio }}</p>
@@ -79,12 +80,12 @@
         </section>
 
         <!-- Seção de Contato -->
-        <section class="my-5">
+        <section class="my-5" id="#contato">
             <h2 class="text-center">Entre em Contato</h2>
             <p class="text-center">Tem alguma dúvida? Entre em contato conosco!</p>
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <form method="POST" action="{{ route('contact.send') }}">
+                    <form method="POST" action="">
                         @csrf
                         <div class="form-group mt-3">
                             <label for="name">Nome</label>

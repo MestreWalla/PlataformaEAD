@@ -14,10 +14,18 @@
             <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
                 <div class="row justify-content-center">
                     <div class="col-md-12">
-                        <div class="card">
+                        <div class="mt-4 mb-4 card">
                             <div class="card-header d-flex justify-content-between align-items-center">
                                 <span>{{ __('Cursos Cadastrados') }}</span>
-                                {{-- <a href="{{ route('courses/create') }}" class="btn btn-primary">Adicionar Novo Curso</a> --}}
+                                <form method="GET" action="{{ route('cursos.index') }}">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" name="search"
+                                            placeholder="Pesquisar cursos..." value="{{ request('search') }}">
+                                        <button class="btn btn-outline-secondary" type="submit">Pesquisar</button>
+                                    </div>
+                                </form>
+
+                                <a class="btn btn-primary" href="/courses/create">Adicionar novo Curso</a>
                             </div>
 
                             <div class="card-body">
@@ -58,14 +66,15 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    {{-- <a href="{{ route('course.edit', $course->id) }}"
-                                                class="btn btn-warning btn-sm">Editar</a> --}}
-                                                    <form action="{{ route('courses.destroy', $curso->id) }}" method="POST"
-                                                        style="display: inline;">
+                                                    <a href="{{ route('course.edit', $curso->id) }}"
+                                                        class="btn btn-warning btn-sm">Editar</a>
+                                                    <form action="{{ route('courses.destroy', $curso->id) }}"
+                                                        method="POST" style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"
                                                             onclick="return confirm('Tem certeza que deseja excluir este curso?')">Excluir</button>
+                                                        {{-- <a href="courses/{course}/edit" class="btn btn-warning btn-sm">Editar</a> --}}
                                                     </form>
                                                 </td>
                                             </tr>

@@ -23,6 +23,8 @@
                         <div class="col-md-4">
                             <div class="card mb-4">
                                 <div class="card-body">
+                                    <img src="{{ 'https://via.placeholder.com/150' }}" class="card-img-top"
+                                        alt="{{ $teacher->name }}">
                                     <h5 class="card-title">{{ $teacher->name }}</h5>
                                     <p class="card-text"><strong>Email:</strong> {{ $teacher->email }}</p>
                                     <p class="card-text"><strong>Telefone:</strong> {{ $teacher->phone }}</p>

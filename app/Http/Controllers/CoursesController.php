@@ -11,11 +11,17 @@ class CoursesController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cursos = Courses::all();
+        $search = $request->input('search');
+        $cursos = Courses::when($search, function ($query, $search) {
+            return $query->where('title', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%");
+        })->get();
+
         return view('cursos.index', compact('cursos'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -53,8 +59,10 @@ class CoursesController extends Controller
      */
     public function edit(Courses $course)
     {
-        return view('cursos.edit', compact('course'));
+        $teachers = User::where('user_type', 'professor')->get();
+        return view('cursos.edit', compact('course', 'teachers'));
     }
+
 
     /**
      * Update the specified resource in storage.

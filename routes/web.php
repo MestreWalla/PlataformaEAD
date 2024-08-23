@@ -9,8 +9,6 @@ use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\HomeController;
 
-// Route::get('/', function () {return view('index');});
-// Route::get('/', function () {return view('index');})->name('index');
 Route::get('/', [HomeController::class, 'index'])->name('index');
 // Rotas para Cadastro de Usuário
 Route::get('/register', [UserController::class, 'showRegisterForm'])->name('users.register');
@@ -26,6 +24,7 @@ Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(User
 Route::get('/courses/create', [CoursesController::class, 'create'])->middleware(UsersMiddleware::class)->name('courses.create');
 Route::get('/cursos', [CoursesController::class, 'index'])->name('cursos.index');
 Route::post('/courses', [CoursesController::class, 'store'])->name('course.store');
+Route::get('/cursospublico', [CoursesController::class, 'cursos'])->name('cursos.cursos');
 // Rota para edição de curso
 Route::get('courses/{course}/edit', [CoursesController::class, 'edit'])->middleware(UsersMiddleware::class)->name('course.edit');
 // Rota para atualizar o curso
@@ -33,7 +32,7 @@ Route::put('courses/{course}', [CoursesController::class, 'update'])->middleware
 // Rota para deletar um curso
 Route::delete('curso/{curso}', [CoursesController::class, 'destroy'])->middleware(UsersMiddleware::class)->name('courses.destroy');
 // Rota para visualização de um curso específico
-Route::get('cursos/{id}', [CoursesController::class, 'show'])->middleware(UsersMiddleware::class)->name('cursos.show');
+Route::get('cursos/{id}', [CoursesController::class, 'show'])->name('cursos.show');
 // Rota para visualizar os professores cadastrados
 Route::get('/professores', [TeacherController::class, 'index'])->name('users.professores');
 // Rota para visualizar os alunos cadastrados

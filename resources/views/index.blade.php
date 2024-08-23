@@ -1,29 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
-    @if ($message = Session::get('success'))
-        <div class="alert alert-success">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
-    @if ($message = Session::get('error'))
-        <div class="alert alert-warning">
-            <p>{{ $message }}</p>
-        </div>
-    @endif
+@include('components.avisos')
+
     <div class="container my-5">
         <!-- Seção de Boas-vindas -->
         <section class="text-center mb-5">
             <h1 class="display-4">Bem-vindo à Plataforma EAD</h1>
             <p class="lead">Uma instituição dedicada a oferecer a melhor educação para você!</p>
-            <a href="{{ route('index') }}" class="btn btn-primary btn-lg">Ver Cursos</a>
+            <a href="{{ route('cursos.cursos') }}" class="btn btn-primary btn-lg">Ver Cursos</a>
         </section>
 
         <!-- Seção Sobre a Escola -->
         <section class="my-5">
             <div class="row">
                 <div class="col-md-6">
-                    <img src="https://via.placeholder.com/500" class="img-fluid rounded" alt="Escola ABC">
+                    <img src="https://via.placeholder.com/500" class="img-fluid rounded" alt="Escola">
                 </div>
                 <div class="col-md-6">
                     <h2>Sobre Nós</h2>
@@ -38,20 +30,26 @@
 
         <!-- Seção de Cursos Oferecidos -->
         <section class="my-5">
-            <h2 class="text-center">Cursos Oferecidos</h2>
-            <div class="row mt-4">
+            <!-- Lista de Cursos -->
+            <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 mt-1 g-4 mb-3">
                 @foreach ($cursos as $curso)
-                    <div class="col-md-4 mb-4">
+                    <div class="col">
                         <div class="card h-100">
-                            <img src="{{ 'https://via.placeholder.com/150' }}"
-                                class="card-img-top" alt="{{ $curso->title }}">
+                            {{-- <img src="{{ asset('storage/' . $curso->imagem) }}" class="card-img-top" alt="{{ $curso->name }}"> --}}
+                            <img src="{{ 'https://via.placeholder.com/150' }}" class="card-img-top"
+                                alt="{{ $curso->title }}">
+                            {{-- <img src="assets/img/Curso.jpg" class="rounded card-img-top" alt="{{ $curso->title }}"> --}}
                             <div class="card-body">
                                 <h5 class="card-title">{{ $curso->title }}</h5>
-                                <p class="card-text">{{ Str::limit($curso->description, 100) }}</p>
-                                <p class="card-text"><strong>Preço:</strong> R$
-                                    {{ number_format($curso->price, 2, ',', '.') }}</p>
-                                <a href="{{ route('cursos.show', $curso->id) }}" class="btn btn-primary">Saiba Mais</a>
+                                <p class="card-text">{{ $curso->description }}</p>
+                                <p class="card-text">Preço: R$ {{ $curso->price }}</p>
                             </div>
+                            <a href="{{ route('cursos.show', $curso->id) }}"
+                                class="fw-medium fs-6 btn btn-light card-footer icon-link icon-link-hover"
+                                style="--bs-link-hover-color-rgb: 25, 135, 84;">
+                                Ver Curso
+                                <i class="bi bi-arrow-right "></i>
+                            </a>
                         </div>
                     </div>
                 @endforeach

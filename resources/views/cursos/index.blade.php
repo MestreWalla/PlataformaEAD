@@ -25,20 +25,12 @@
                                     </div>
                                 </form>
 
-                                <a class="btn btn-primary" href="/courses/create">Adicionar novo Curso</a>
+                                <a class="btn btn-primary" href="/courses/create">Novo Curso</a>
                             </div>
 
                             <div class="card-body">
-                                @if ($message = Session::get('success'))
-                                    <div class="alert alert-success">
-                                        <p>{{ $message }}</p>
-                                    </div>
-                                @endif
-                                @if ($message = Session::get('error'))
-                                    <div class="alert alert-warning">
-                                        <p>{{ $message }}</p>
-                                    </div>
-                                @endif
+                                <!-- Avisos de sucesso ou erro -->
+                                @include('components.avisos')
 
                                 <table class="table table-bordered table-striped">
                                     <thead>
@@ -68,8 +60,8 @@
                                                 <td>
                                                     <a href="{{ route('course.edit', $curso->id) }}"
                                                         class="btn btn-warning btn-sm">Editar</a>
-                                                    <form action="{{ route('courses.destroy', $curso->id) }}"
-                                                        method="POST" style="display: inline;">
+                                                    <form action="{{ route('courses.destroy', $curso->id) }}" method="POST"
+                                                        style="display: inline;">
                                                         @csrf
                                                         @method('DELETE')
                                                         <button type="submit" class="btn btn-danger btn-sm"

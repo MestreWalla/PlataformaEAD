@@ -10,11 +10,10 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
                     <a class="nav-link active" href="/">Início</a>
-                    {{-- <a class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}" href="{{ route('home') }}">Início</a> --}}
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('courses.index') ? 'active' : '' }}"
-                        href="{{ route('cursos.index') }}">Cursos</a>
+                        href="{{ route('cursos.cursos') }}">Cursos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Sobre</a>

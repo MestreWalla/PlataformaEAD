@@ -19,22 +19,30 @@ class UserController extends Controller
     // Processar o login do usuário
     public function login(Request $request)
     {
+        // Valida as credenciais fornecidas
         $credentials = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
         ]);
 
-
+        // Tenta autenticar o usuário
         if (Auth::guard('web')->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard');
+
+            // Verifica o tipo de usuário
+            if (Auth::user()->user_type === 'professor') {
+                return redirect()->intended('/dashboard');
+            } else {
+                return redirect('/cursos');
+            }
         }
 
-        return back()->withErrors([
-            'email' => 'As credenciais não correspondem aos nossos registro.',
-        ])->onlyInput('email');
+        // Se as credenciais falharem
+        // return back()->withErrors([
+        //     'error' => 'As credenciais não correspondem aos nossos registros.',
+        // ])->onlyInput('email');
+        return back()->with('error', 'As credenciais não correspondem aos nossos registros.');
     }
-
 
     // Exibir o formulário de registro
     public function showRegisterForm()

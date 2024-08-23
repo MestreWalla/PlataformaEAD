@@ -4,16 +4,7 @@
     <div class="container m-4">
         <h1>Login</h1>
 
-        @if ($message = Session::get('success'))
-            <div id="success-message" class="alert alert-success">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
-        @if ($message = Session::get('error'))
-            <div id="error-message" class="alert alert-warning">
-                <p>{{ $message }}</p>
-            </div>
-        @endif
+        @include('components.avisos')
 
         <form method="POST" action="{{ route('users.login') }}">
             @csrf

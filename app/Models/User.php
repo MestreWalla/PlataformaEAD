@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Courses::class, 'teacher_id');
     }
+
+    public function credencial()
+    {
+        return $this -> user_type === "professor";
+    }
 }

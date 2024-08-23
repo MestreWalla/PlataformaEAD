@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->decimal('price', 8, 2)->default(0.00);  // Adicionado campo 'price'
-            $table->string('img_path')->nullable();  // Adicionado campo 'img_path'
+            $table->decimal('price', 8, 2)->default(0.00);
+            $table->string('img_path')->nullable();
             $table->foreignId('teacher_id')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });

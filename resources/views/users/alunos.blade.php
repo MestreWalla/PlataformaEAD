@@ -3,16 +3,8 @@
 @section('content')
     <div class="container-fluid">
         <div class="row">
-            @if ($message = Session::get('success'))
-                <div class="alert alert-success">
-                    <p>{{ $message }}</p>
-                </div>
-            @endif
-            @if ($message = Session::get('error'))
-                <div class="alert alert-warning">
-                    <p>{{ $message }}</p>
-                </div>
-            @endif
+            <!-- Avisos de sucesso ou erro -->
+            @include('components.avisos')
             <!-- Menu de Navegação Lateral -->
             @include('parts.sidebar')
 

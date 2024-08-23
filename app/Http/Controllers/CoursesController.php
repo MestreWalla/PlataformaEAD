@@ -22,6 +22,16 @@ class CoursesController extends Controller
         return view('cursos.index', compact('cursos'));
     }
 
+    public function cursos(Request $request)
+    {
+        $search = $request->input('search');
+        $cursos = Courses::when($search, function ($query, $search) {
+            return $query->where('title', 'like', "%{$search}%")
+                ->orWhere('description', 'like', "%{$search}%");
+        })->get();
+
+        return view('cursos.cursos', compact('cursos'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -106,8 +116,18 @@ class CoursesController extends Controller
         ];
     }
 
-    public function show(Courses $course)
-    {
-        return view('cursos.show', compact('course'));
-    }
+    // public function show(Courses $course)
+    // {
+    //     return view('cursos.show', compact('course'));
+    // }
+
+    public function show($id)
+{
+    // Busca o curso pelo ID
+    $course = Courses::findOrFail($id);
+
+    // Retorna a view com os detalhes do curso
+    return view('cursos.show', compact('course'));
+}
+
 }

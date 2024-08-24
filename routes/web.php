@@ -37,3 +37,7 @@ Route::get('cursos/{id}', [CoursesController::class, 'show'])->name('cursos.show
 Route::get('/professores', [TeacherController::class, 'index'])->name('users.professores');
 // Rota para visualizar os alunos cadastrados
 Route::get('/alunos', [StudentsController::class, 'index'])->name('users.alunos');
+// Rotas para editar contas de professores e alunos
+Route::get('users/{user}/edit', [UserController::class, 'edit'])->middleware(UsersMiddleware::class)->name('users.edit');
+Route::put('users/{user}', [UserController::class, 'update'])->middleware(UsersMiddleware::class)->name('users.update');
+Route::delete('users/{user}', [UserController::class, 'destroy'])->middleware(UsersMiddleware::class)->name('users.destroy');

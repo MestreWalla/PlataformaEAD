@@ -77,9 +77,7 @@
                 <input type="text" name="address" id="address"
                     class="form-control @error('address') is-invalid @enderror" value="{{ old('address') }}" required>
                 @error('address')
-                    <div class="invalid-feedback">
-                        {{ $message }}
-                    </div>
+                    <div class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 

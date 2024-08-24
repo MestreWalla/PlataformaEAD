@@ -73,7 +73,6 @@ class CoursesController extends Controller
         return view('cursos.edit', compact('course', 'teachers'));
     }
 
-
     /**
      * Update the specified resource in storage.
      */

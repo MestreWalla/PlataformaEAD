@@ -29,7 +29,20 @@
                                     <p class="card-text"><strong>Email:</strong> {{ $teacher->email }}</p>
                                     <p class="card-text"><strong>Telefone:</strong> {{ $teacher->phone }}</p>
                                     <p class="card-text"><strong>address:</strong> {{ $teacher->address }}
+
+                                    <div class="d-flex justify-content-between mt-3">
+                                        <a href="{{ route('users.edit', $teacher->id) }}"
+                                            class="btn btn-warning btn-sm">Editar</a>
+
+                                        <form action="{{ route('users.destroy', $teacher->id) }}" method="POST"
+                                            onsubmit="return confirm('Tem certeza que deseja apagar este professor?');">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm">Apagar</button>
+                                        </form>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     @endforeach
